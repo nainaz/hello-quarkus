@@ -1,6 +1,8 @@
 package functions;
 
 import io.quarkus.funqy.Funq;
+import java.util.*;
+
 
 /**
  * Your Function class
@@ -16,8 +18,20 @@ public class Function {
     public Output function(Input input) {
 
         // Add business logic here
+        Map<String, String> greetings = Map.of(
+                   "english", "Welcome",
+                   "spanish", "Bienvenido",
+                   "italian", "Benvenuto");
 
-        return new Output(input.getMessage());
+        String lang = Optional.ofNullable(input.getLanguage()).orElse("english");
+        String greeting = greetings.getOrDefault(lang, "");
+    
+        return new Output(String.format("%s!!! Here is your message: %s", greeting,
+                            input.getMessage()));
     }
 
+   
 }
+
+
+

@@ -1,12 +1,14 @@
 specVersion: 0.25.0
 name: hello-quarkus
-namespace: ""
+namespace: test-nainaz
 runtime: quarkus
-registry: ""
-image: ""
+registry: image-registry.openshift-image-registry.svc:5000/test-nainaz
+image: image-registry.openshift-image-registry.svc:5000/test-nainaz/hello-quarkus:latest
 imageDigest: ""
+git:
+  url: https://github.com/nainaz/hello-quarkus.git
 buildpacks: []
-builder: ""
+builder: pack
 volumes: []
 buildEnvs:
 - name: BP_NATIVE_IMAGE
